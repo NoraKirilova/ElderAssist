@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Създаване на нова обява</h2>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Публикувай</button>
+</form>
+
+<p>
+    <a href="{% url 'help_requests:list' %}">Назад към обявите</a>
+</p>
+{% endblock %}
