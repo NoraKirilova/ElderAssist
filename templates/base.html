@@ -7,6 +7,7 @@
 <body>
     <header>
         <h1><a href="{% url 'accounts:profile' %}">ElderAssist</a></h1>
+        <a href="{% url 'help_requests:list' %}">Обяви</a>
 
         <nav>
             {% if user.is_authenticated %}

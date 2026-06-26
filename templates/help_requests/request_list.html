@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Обяви за помощ</h2>
+
+{% if user.is_authenticated %}
+    <p>
+        <a href="{% url 'help_requests:create' %}">Създай нова обява</a>
+    </p>
+{% endif %}
+
+{% if help_requests %}
+    {% for help_request in help_requests %}
+        <div>
+            <h3>
+                <a href="{% url 'help_requests:detail' help_request.pk %}">
+                    {{ help_request.title }}
+                </a>
+            </h3>
+
+            <p><strong>Категория:</strong> {{ help_request.get_category_display }}</p>
+            <p><strong>Квартал/начална локация:</strong> {{ help_request.start_location }}</p>
+            <p><strong>Платена:</strong> {% if help_request.is_paid %}Да{% else %}Не{% endif %}</p>
+            <p><strong>Автор:</strong> {{ help_request.author.username }}</p>
+            <p><strong>Създадена на:</strong> {{ help_request.created_at }}</p>
+        </div>
+
+        <hr>
+    {% endfor %}
+{% else %}
+    <p>Все още няма публикувани обяви.</p>
+{% endif %}
+{% endblock %}

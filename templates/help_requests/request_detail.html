@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>{{ help_request.title }}</h2>
+
+<p><strong>Автор:</strong> {{ help_request.author.username }}</p>
+<p><strong>Категория:</strong> {{ help_request.get_category_display }}</p>
+<p><strong>Описание:</strong> {{ help_request.description }}</p>
+
+<p><strong>Начална локация:</strong> {{ help_request.start_location }}</p>
+<p><strong>Крайна локация:</strong> {{ help_request.end_location }}</p>
+
+<p><strong>Платена:</strong> {% if help_request.is_paid %}Да{% else %}Не{% endif %}</p>
+
+{% if help_request.payment_note %}
+    <p><strong>Бележка за плащане:</strong> {{ help_request.payment_note }}</p>
+{% endif %}
+
+<p><strong>Статус:</strong> {{ help_request.get_status_display }}</p>
+<p><strong>Създадена на:</strong> {{ help_request.created_at }}</p>
+
+<p>
+    <a href="{% url 'help_requests:list' %}">Назад към обявите</a>
+</p>
+{% endblock %}
