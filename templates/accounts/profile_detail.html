@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Моят профил</h2>
+
+<p><strong>Потребителско име:</strong> {{ user.username }}</p>
+<p><strong>Име:</strong> {{ profile.full_name }}</p>
+<p><strong>Квартал:</strong> {{ profile.neighborhood }}</p>
+<p><strong>Телефон:</strong> {{ profile.phone_number }}</p>
+<p><strong>Дата на раждане:</strong> {{ profile.date_of_birth }}</p>
+<p><strong>Пол:</strong> {{ profile.get_gender_display }}</p>
+<p><strong>Интереси:</strong> {{ profile.interests }}</p>
+<p><strong>Нужди:</strong> {{ profile.needs }}</p>
+
+<a href="{% url 'accounts:profile_edit' %}">Редактирай профила</a>
+{% endblock %}
